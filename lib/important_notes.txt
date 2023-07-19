@@ -1,0 +1,5 @@
+The purpose of a MaterialApp widget is to provide a common theme setting based on 
+Material design and configures the root navigator for all of its children widgets.
+
+Never use two, atleast not one in other.
+
