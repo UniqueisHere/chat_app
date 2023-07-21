@@ -3,3 +3,8 @@ Material design and configures the root navigator for all of its children widget
 
 Never use two, atleast not one in other.
 
+
+-------------------------------------------------------------------------------------------------------
+When we use .pushNamed() it keeps the other screen in stack thus enabling to get back to the previous state.
+It can come in handy when navigating betweent he pages after loggin in but donot use it while logging in.
+-------------------------------------------------------------------------------------------------------
