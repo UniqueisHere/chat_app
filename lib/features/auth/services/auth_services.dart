@@ -15,55 +15,53 @@ class AuthServices {
       await FirebaseAuth.instance.currentUser!.updateDisplayName(name);
       await FirebaseAuth.instance.currentUser!.updateEmail(email);
       await FirestoreServices.saveUser(name, email, userCredential.user!.uid);
-      // customSnackBar(
-      //   backgroundColor: Colors.greenAccent,
-      //   context: context,
-      //   customText: CustomText(
-      //     color: AllColors.whiteColor,
-      //     size: 12,
-      //     text: 'Registration Successful',
-      //   ),
-      //   durationInSeconds: 2,
-      // );
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('Registration Successful.'),
+          backgroundColor: Colors.greenAccent,
+          dismissDirection: DismissDirection.up,
+          duration: Duration(
+            seconds: 2,
+          ),
+        ),
+      );
+      Navigator.of(context).pushReplacementNamed('/home');
       print('Registration Successful');
     } on FirebaseAuthException catch (error) {
       if (error.code == 'weak-password') {
-        // customSnackBar(
-        //   backgroundColor: Colors.greenAccent,
-        //   context: context,
-        //   customText: const CustomText(
-        //     color: Colors.red,
-        //     size: 12,
-        //     text: 'Password is too weak. Enter strong password.',
-        //   ),
-        //   durationInSeconds: 2,
-        // );
-        print('Weak Password');
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text('Password too weak.'),
+            backgroundColor: Colors.red,
+            dismissDirection: DismissDirection.up,
+            duration: Duration(
+              seconds: 2,
+            ),
+          ),
+        );
       } else if (error.code == 'email-already-in-use') {
-        // customSnackBar(
-        //   backgroundColor: Colors.greenAccent,
-        //   context: context,
-        //   customText: const CustomText(
-        //     color: Colors.red,
-        //     size: 12,
-        //     text: 'Email already exists. Please enter new email.',
-        //   ),
-        //   durationInSeconds: 2,
-        // );
-        print('Email Exists');
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text('Email Already Exists.'),
+            backgroundColor: Colors.red,
+            dismissDirection: DismissDirection.up,
+            duration: Duration(
+              seconds: 2,
+            ),
+          ),
+        );
       }
     } catch (error) {
-      // customSnackBar(
-      //   backgroundColor: Colors.greenAccent,
-      //   context: context,
-      //   customText: CustomText(
-      //     color: Colors.red,
-      //     size: 12,
-      //     text: 'Error. ${error.toString()}',
-      //   ),
-      //   durationInSeconds: 2,
-      // );
-      print('Something went wrong');
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('Error $error.'),
+          backgroundColor: Colors.red,
+          dismissDirection: DismissDirection.up,
+          duration: const Duration(
+            seconds: 2,
+          ),
+        ),
+      );
     }
   }
 
@@ -75,55 +73,52 @@ class AuthServices {
       await FirebaseAuth.instance
           .signInWithEmailAndPassword(email: email, password: password);
 
-      // customSnackBar(
-      //   backgroundColor: Colors.greenAccent,
-      //   context: context,
-      //   customText: const CustomText(
-      //     color: Colors.greenAccent,
-      //     size: 12,
-      //     text: 'Successfully logged in',
-      //   ),
-      //   durationInSeconds: 2,
-      // );
-      print('Login Successful');
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('Sucessfully Loggedin.'),
+          backgroundColor: Colors.greenAccent,
+          dismissDirection: DismissDirection.up,
+          duration: Duration(
+            seconds: 2,
+          ),
+        ),
+      );
+      Navigator.of(context).pushReplacementNamed('/home');
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
-        // customSnackBar(
-        //   backgroundColor: Colors.greenAccent,
-        //   context: context,
-        //   customText: const CustomText(
-        //     color: Colors.red,
-        //     size: 12,
-        //     text: 'No user Found with this Email',
-        //   ),
-        //   durationInSeconds: 2,
-        // );
-        print('Nouser with this email');
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text('No user with this email'),
+            backgroundColor: Colors.red,
+            dismissDirection: DismissDirection.up,
+            duration: Duration(
+              seconds: 2,
+            ),
+          ),
+        );
       } else if (e.code == 'wrong-password') {
-        // customSnackBar(
-        //   backgroundColor: Colors.greenAccent,
-        //   context: context,
-        //   customText: const CustomText(
-        //     color: Colors.red,
-        //     size: 12,
-        //     text: 'Password did not match.',
-        //   ),
-        //   durationInSeconds: 2,
-        // );
-        print('Wrong password');
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text('Wrong Password'),
+            backgroundColor: Colors.red,
+            dismissDirection: DismissDirection.up,
+            duration: Duration(
+              seconds: 2,
+            ),
+          ),
+        );
       }
     } catch (error) {
-      // customSnackBar(
-      //   backgroundColor: Colors.greenAccent,
-      //   context: context,
-      //   customText: CustomText(
-      //     color: Colors.red,
-      //     size: 12,
-      //     text: 'Error. ${error.toString()}',
-      //   ),
-      //   durationInSeconds: 2,
-      // );
-      print('Something went wrong');
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('Error $error.'),
+          backgroundColor: Colors.red,
+          dismissDirection: DismissDirection.up,
+          duration: const Duration(
+            seconds: 2,
+          ),
+        ),
+      );
     }
   }
 }

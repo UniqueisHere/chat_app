@@ -169,8 +169,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                 email: emailController.text,
                                 context: context,
                               );
-                              Navigator.of(context)
-                                  .pushReplacementNamed('/home');
+                              
                             }
                           },
                           child: const CustomText(
