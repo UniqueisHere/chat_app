@@ -1,4 +1,5 @@
 import 'package:chat_app/core/constants/responsive/responsive_layout.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -10,7 +11,10 @@ class HomeScreen extends StatelessWidget {
       mobile: Scaffold(
           body: Center(
         child: TextButton(
-          onPressed: () {},
+          onPressed: () async {
+            FirebaseAuth.instance.signOut();
+            Navigator.of(context).pushReplacementNamed('/');
+          },
           child: const Text('Logout'),
         ),
       )),
