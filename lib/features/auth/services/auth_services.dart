@@ -26,7 +26,7 @@ class AuthServices {
         ),
       );
       Navigator.of(context).pushReplacementNamed('/home');
-      print('Registration Successful');
+      // print('Registration Successful');
     } on FirebaseAuthException catch (error) {
       if (error.code == 'weak-password') {
         ScaffoldMessenger.of(context).showSnackBar(
@@ -120,5 +120,19 @@ class AuthServices {
         ),
       );
     }
+    // try {
+    //   final credential = await FirebaseAuth.instance
+    //       .signInWithEmailAndPassword(email: email, password: password);
+    //   print('User successfully logged in.');
+    //   Navigator.of(context).pushReplacementNamed('/home');
+    // } on FirebaseAuthException catch (e) {
+    //   if (e.code == 'user-not-found') {
+    //     print('No user found for that email.');
+    //   } else if (e.code == 'wrong-password') {
+    //     print('Wrong password provided for that user.');
+    //   }
+    // } catch (e) {
+    //   print(e.toString());
+    // }
   }
 }

@@ -145,8 +145,6 @@ class _LoginScreenState extends State<LoginScreen> {
                                   email: emailController.text,
                                   password: passwordController.text,
                                   context: context);
-                              Navigator.of(context)
-                                  .pushReplacementNamed('/home');
                             }
                           },
                           child: const CustomText(
@@ -213,7 +211,23 @@ class _LoginScreenState extends State<LoginScreen> {
                               ),
                             ),
                           ),
-                          onPressed: () {},
+                          onPressed: () {
+                            // ScaffoldMessenger.of(context).showSnackBar(
+                            //   SnackBar(
+                            //     behavior: SnackBarBehavior.floating,
+                            //     content: const Center(
+                            //         child: Text('🤨 Wrong Password')),
+                            //     animation: const AlwaysStoppedAnimation(0.2),
+                            //     shape: const StadiumBorder(),
+                            //     backgroundColor: Colors.red.withOpacity(0.3),
+                            //     dismissDirection: DismissDirection.up,
+                            //     duration: const Duration(
+                            //       seconds: 2,
+                            //     ),
+                            //     // padding: const EdgeInsets.all(2),
+                            //   ),
+                            // );
+                          },
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
