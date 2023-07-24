@@ -25,7 +25,7 @@ class AuthServices {
           ),
         ),
       );
-      Navigator.of(context).pushReplacementNamed('/home');
+      Navigator.of(context).pushReplacementNamed('/layout');
       // print('Registration Successful');
     } on FirebaseAuthException catch (error) {
       if (error.code == 'weak-password') {
@@ -83,7 +83,7 @@ class AuthServices {
           ),
         ),
       );
-      Navigator.of(context).pushReplacementNamed('/home');
+      Navigator.of(context).pushReplacementNamed('/layout');
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
         ScaffoldMessenger.of(context).showSnackBar(
