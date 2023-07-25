@@ -1,8 +1,10 @@
-import 'package:chat_app/core/constants/colors/colors.dart';
 import 'package:chat_app/core/constants/responsive/responsive_layout.dart';
 import 'package:chat_app/features/home/views/home_screen.dart';
+import 'package:chat_app/features/profile/views/profile_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
+import '../core/constants/colors/colors.dart';
 
 class Layout extends StatefulWidget {
   const Layout({super.key});
@@ -14,17 +16,27 @@ class Layout extends StatefulWidget {
 class _LayoutState extends State<Layout> {
   int currentIndex = 0;
   List<Widget> screens = [
-    const HomeScreen(),
-    Container(
-      child: const Center(
-        child: Text('Profile Screen'),
+    HomeScreen(),
+    Scaffold(
+      body: Container(
+        child: const Center(
+          child: Text('Profile Screen'),
+        ),
       ),
     ),
-    Container(
-      child: const Center(
+    const Scaffold(
+      body: Center(
         child: Text('Favorite Screen'),
       ),
     ),
+    Scaffold(
+      body: Container(
+        child: const Center(
+          child: Text('Chat Screen'),
+        ),
+      ),
+    ),
+    const ProfileScreen()
   ];
   @override
   Widget build(BuildContext context) {
@@ -35,19 +47,29 @@ class _LayoutState extends State<Layout> {
           items: const [
             BottomNavigationBarItem(
                 icon: FaIcon(
-                  FontAwesomeIcons.a,
+                  FontAwesomeIcons.house,
                 ),
-                label: 'A'),
+                label: 'Home'),
             BottomNavigationBarItem(
                 icon: FaIcon(
-                  FontAwesomeIcons.addressBook,
+                  FontAwesomeIcons.heart,
                 ),
-                label: 'B'),
+                label: 'Favorite'),
             BottomNavigationBarItem(
                 icon: FaIcon(
-                  FontAwesomeIcons.addressBook,
+                  FontAwesomeIcons.plus,
                 ),
-                label: 'B'),
+                label: 'Add'),
+            BottomNavigationBarItem(
+                icon: FaIcon(
+                  FontAwesomeIcons.comment,
+                ),
+                label: 'Favorite'),
+            BottomNavigationBarItem(
+                icon: FaIcon(
+                  Icons.person,
+                ),
+                label: 'Profile'),
           ],
           currentIndex: currentIndex,
           onTap: (value) {
@@ -61,6 +83,7 @@ class _LayoutState extends State<Layout> {
           type: BottomNavigationBarType.fixed,
           showSelectedLabels: false,
           showUnselectedLabels: false,
+          // selectedItemColor: Colors.white,
         ),
       ),
       tablet: Container(),

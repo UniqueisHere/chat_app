@@ -4,14 +4,15 @@ import '../../../core/constants/colors/colors.dart';
 import '../../../core/widgets/custom_text.dart';
 
 class UserItem extends StatelessWidget {
-  const UserItem({super.key});
+  final String userName;
+  const UserItem({super.key, required this.userName});
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(
-        right: 10.0,
-        left: 10.0,
+        right: 24.0,
+        left: 24.0,
       ),
       child: Column(
         children: [
@@ -21,23 +22,33 @@ class UserItem extends StatelessWidget {
                 'assets/temp/temp_image_one.png',
                 width: 40,
                 height: 40,
+                fit: BoxFit.fill,
               ),
               const SizedBox(
-                width: 8,
+                width: 18,
               ),
               CustomText(
                 color: AllColors.textColor,
                 size: 12,
-                text: 'Niraj Pandey',
+                text: userName,
               ),
             ],
+          ),
+          const SizedBox(
+            height: 10,
           ),
           const Image(
             image: AssetImage('assets/temp/iron_man.png'),
           ),
           const SizedBox(
-            height: 8,
-          )
+            height: 12,
+          ),
+          CustomText(
+            color: AllColors.textColor,
+            size: 12,
+            text:
+                'Any thing that really doesnt matter but it still has to go here and occuoy the space to make it look attractive.',
+          ),
         ],
       ),
     );
