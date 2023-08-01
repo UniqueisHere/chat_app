@@ -1,6 +1,9 @@
+import 'package:chat_app/core/constants/app_icons_and_images/app_icons_and_images.dart';
+import 'package:chat_app/core/constants/app_texts/app_texts.dart';
 import 'package:chat_app/core/constants/colors/colors.dart';
 import 'package:chat_app/core/constants/responsive/responsive_layout.dart';
 import 'package:chat_app/core/widgets/custom_text.dart';
+import 'package:chat_app/core/widgets/custom_text_field.dart';
 import 'package:flutter/material.dart';
 
 import '../services/auth_services.dart';
@@ -47,7 +50,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       CustomText(
                         color: AllColors.textColor,
                         size: 100,
-                        text: 'Hello, Welcome Back!',
+                        text: AppTexts.helloWelcomeBack,
                         fontWeight: FontWeight.bold,
                       ),
                       const SizedBox(
@@ -56,63 +59,36 @@ class _LoginScreenState extends State<LoginScreen> {
                       CustomText(
                         color: AllColors.textColor,
                         size: 12,
-                        text: 'Please Login to continue.',
+                        text: AppTexts.pleaseLoginToContinue,
                       ),
                       const Spacer(),
-                      TextFormField(
-                        // autofocus: true,
-                        // focusNode: FocusNode(
-                        //   canRequestFocus: true,
-                        // ),
-
-                        // autocorrect: false,
-                        controller: emailController,
-                        decoration: InputDecoration(
-                          // hintText: 'Username',
-                          labelText: 'Please Enter the Email',
-                          fillColor: AllColors.textFieldColor,
-                          filled: true,
-                          border: const OutlineInputBorder(
-                            borderRadius: BorderRadius.all(
-                              Radius.circular(12),
-                            ),
-                          ),
-                          // labelStyle: TextField.materialMisspelledTextStyle,
-                        ),
+                      CustomTextField(
+                        obscureText: false,
+                        hintText: AppTexts.pleaseEnterTheEmail,
+                        textController: emailController,
                         validator: (value) {
                           if (value!.isEmpty) {
                             return 'Please enter some text';
                           } else if (!value.contains('@')) {
                             return 'Invalid Email';
                           }
-                          return null; // Return null if the input is valid
+                          return null;
                         },
                       ),
                       const SizedBox(
                         height: 16,
                       ),
-                      TextFormField(
-                        controller: passwordController,
-                        autocorrect: false,
+                      CustomTextField(
                         obscureText: true,
-                        decoration: InputDecoration(
-                          // hintText: 'Password',
-                          labelText: 'Please Enter the Password',
-                          fillColor: AllColors.textFieldColor,
-                          filled: true,
-                          border: const OutlineInputBorder(
-                            borderRadius: BorderRadius.all(
-                              Radius.circular(12),
-                            ),
-                          ),
-                          // labelStyle: TextField.materialMisspelledTextStyle,
-                        ),
-                        validator: (value) {
-                          if (value!.isEmpty) {
-                            return 'Please enter some text';
-                          }
-                          return null; // Return null if the input is valid
-                        },
+
+                        hintText: AppTexts.pleaseEnterThePassword,
+                        textController: passwordController,
+                        // validator: (value) {
+                        //   if (value!.isEmpty) {
+                        //     return 'Please enter some text';
+                        //   }
+                        //   return null;
+                        // },
                       ),
                       Align(
                         alignment: Alignment.centerRight,
@@ -123,7 +99,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           child: CustomText(
                             color: AllColors.textColor,
                             size: 5,
-                            text: 'Forgot password?',
+                            text: AppTexts.forgotPassword,
                           ),
                         ),
                       ),
@@ -150,7 +126,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           child: const CustomText(
                             color: Colors.black,
                             size: 12,
-                            text: 'Login',
+                            text: AppTexts.login,
                           ),
                         ),
                       ),
@@ -158,7 +134,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       CustomText(
                         color: AllColors.textColor,
                         size: 12,
-                        text: 'Or login with',
+                        text: AppTexts.orLoginWith,
                       ),
                       const SizedBox(
                         height: 8,
@@ -180,7 +156,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Image.asset(
-                                'assets/images/facebook_logo.png',
+                                AppIconsAndImages.facebookLogo,
                                 width: 22,
                                 height: 22,
                               ),
@@ -190,7 +166,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               CustomText(
                                 color: AllColors.blackColor,
                                 size: 12,
-                                text: 'Log in with Facebook.',
+                                text: AppTexts.loginWithFacebook,
                               )
                             ],
                           ),
@@ -232,7 +208,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Image.asset(
-                                'assets/images/google_logo.png',
+                                AppIconsAndImages.googleLogo,
                                 width: 22,
                                 height: 22,
                               ),
@@ -242,7 +218,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               CustomText(
                                 color: AllColors.blackColor,
                                 size: 12,
-                                text: 'Log in with Google.',
+                                text: AppTexts.loginWithGoogle,
                               )
                             ],
                           ),
@@ -256,7 +232,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           CustomText(
                             color: AllColors.textColor,
                             size: 12,
-                            text: "Don't have an account?",
+                            text: AppTexts.dontHaveAnAccount,
                           ),
                           const SizedBox(
                             width: 8,
@@ -269,7 +245,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             child: CustomText(
                               color: AllColors.bottonColor,
                               size: 12,
-                              text: "SignUp",
+                              text: AppTexts.signup,
                             ),
                           ),
                         ],

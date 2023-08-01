@@ -1,3 +1,6 @@
+import 'package:chat_app/core/constants/app_icons_and_images/app_icons_and_images.dart';
+import 'package:chat_app/core/constants/app_texts/app_texts.dart';
+import 'package:chat_app/core/widgets/profile_avatar.dart';
 import 'package:flutter/material.dart';
 
 import '../../../core/constants/colors/colors.dart';
@@ -18,12 +21,7 @@ class UserItem extends StatelessWidget {
         children: [
           Row(
             children: [
-              Image.asset(
-                'assets/temp/temp_image_one.png',
-                width: 40,
-                height: 40,
-                fit: BoxFit.fill,
-              ),
+              const ProfileAvatar(),
               const SizedBox(
                 width: 18,
               ),
@@ -38,7 +36,7 @@ class UserItem extends StatelessWidget {
             height: 10,
           ),
           const Image(
-            image: AssetImage('assets/temp/iron_man.png'),
+            image: AssetImage(AppIconsAndImages.ironMan),
           ),
           const SizedBox(
             height: 12,
@@ -46,8 +44,7 @@ class UserItem extends StatelessWidget {
           CustomText(
             color: AllColors.textColor,
             size: 12,
-            text:
-                'Any thing that really doesnt matter but it still has to go here and occuoy the space to make it look attractive.',
+            text: AppTexts.longText,
           ),
         ],
       ),

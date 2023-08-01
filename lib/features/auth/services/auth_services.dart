@@ -1,3 +1,4 @@
+import 'package:chat_app/core/constants/routes/routes.dart';
 import 'package:chat_app/features/auth/services/firestore_services.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -25,7 +26,7 @@ class AuthServices {
           ),
         ),
       );
-      Navigator.of(context).pushReplacementNamed('/layout');
+      Navigator.of(context).pushReplacementNamed(Routes.layout);
       // print('Registration Successful');
     } on FirebaseAuthException catch (error) {
       if (error.code == 'weak-password') {
@@ -83,7 +84,7 @@ class AuthServices {
           ),
         ),
       );
-      Navigator.of(context).pushReplacementNamed('/layout');
+      Navigator.of(context).pushReplacementNamed(Routes.layout);
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
         ScaffoldMessenger.of(context).showSnackBar(
@@ -103,6 +104,17 @@ class AuthServices {
             backgroundColor: Colors.red,
             dismissDirection: DismissDirection.up,
             duration: Duration(
+              seconds: 2,
+            ),
+          ),
+        );
+      } else {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('Sign failed with exception ${e.code}'),
+            backgroundColor: Colors.red,
+            dismissDirection: DismissDirection.up,
+            duration: const Duration(
               seconds: 2,
             ),
           ),

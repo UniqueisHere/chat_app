@@ -1,8 +1,10 @@
+import 'package:chat_app/core/constants/app_texts/app_texts.dart';
 import 'package:chat_app/core/constants/colors/colors.dart';
 import 'package:chat_app/core/constants/responsive/responsive_layout.dart';
+import 'package:chat_app/core/constants/routes/routes.dart';
 import 'package:chat_app/features/home/widgets/home_menu.dart';
 import 'package:chat_app/features/home/widgets/user_items.dart';
-import 'package:chat_app/layout/appnar.dart';
+import 'package:chat_app/layout/custom_appbar.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -17,16 +19,16 @@ class HomeScreen extends StatelessWidget {
       mobile: Scaffold(
         backgroundColor: AllColors.scaffoldColor,
         appBar: CustomAppBar(
-          title: '5MinutesFlutter',
+          title: AppTexts.fiveMinFlutter,
           appBarActions: [
             PopupMenuButton(
               onSelected: (value) {
                 switch (value) {
                   case HomeMenu.logout:
                     FirebaseAuth.instance.signOut();
-                    Navigator.of(context).popAndPushNamed('/');
+                    Navigator.of(context).popAndPushNamed(Routes.login);
                     break;
-                  case HomeMenu.logout:
+                  case HomeMenu.nothing:
                     break;
                   default:
                 }
@@ -35,7 +37,7 @@ class HomeScreen extends StatelessWidget {
                 return [
                   const PopupMenuItem<HomeMenu>(
                     value: HomeMenu.logout,
-                    child: Text('Logout'),
+                    child: Text(AppTexts.logout),
                   ),
                   const PopupMenuItem<HomeMenu>(
                     value: HomeMenu.nothing,

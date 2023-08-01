@@ -1,0 +1,39 @@
+class AppTexts {
+  static const String username = 'Username';
+  static const String firstname = 'First name';
+  static const String lastname = 'Last name';
+  static const String phoneNumber = 'Phone number';
+  static const String address = 'Address';
+  static const String pleaseEnterTheEmail = "Please Enter the Email";
+  static const String pleaseEnterThePassword = "Please Enter the Password";
+  static const String pleaseLoginToContinue = 'Please Login to continue.';
+  static const String signup = 'Sign Up';
+  static const String login = 'Log In';
+  static const String logout = 'Log Out';
+  static const String longText =
+      'Any thing that really doesnt matter but it still has to go here and occupy the space to make it look attractive.';
+  static const String loginWithGoogle = 'Log in with Google';
+  static const String loginWithFacebook = 'Log in with Facebook';
+  static const String forgotPassword = 'Forgot Password?';
+  static const String orLoginWith = 'Or login with';
+  static const String dontHaveAnAccount = "Don't have an account?";
+  static const String fiveMinFlutter = "5MinutesFlutter";
+  static const String helloWelcomeBack = 'Hello, Welcome Back!';
+  static const String nirajPandey = "Niraj Pandey";
+  static const String nirajPandeyLocation = "Halgada, Nepal";
+  static const String followers = "Followers";
+  static const String following = "Following";
+  static const String posts = "Posts";
+  static const String profile = "Profile";
+  static const String editProfile = "Edit Profile";
+  static const String home = "Home";
+  static const String chats = "Chats";
+  static const String add = "Add";
+  static const String favorite = "Favorite";
+  static const String count = "112";
+  static const String male = "Male";
+  static const String female = "Female";
+  static const String other = "Other";
+  static const String gender = "Gender";
+  static const String location = "Location";
+}

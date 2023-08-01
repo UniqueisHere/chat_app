@@ -1,8 +1,10 @@
 import 'package:chat_app/core/constants/colors/colors.dart';
 import 'package:chat_app/core/constants/responsive/responsive_layout.dart';
+import 'package:chat_app/core/constants/routes/routes.dart';
 import 'package:chat_app/core/widgets/custom_text.dart';
 import 'package:flutter/material.dart';
 
+import '../../../core/widgets/custom_text_field.dart';
 import '../services/auth_services.dart';
 
 class SignUpScreen extends StatefulWidget {
@@ -54,87 +56,46 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       const SizedBox(
                         height: 16,
                       ),
-                      TextFormField(
-                        // autofocus: true,
-                        controller: usernameController,
-                        autocorrect: false,
-                        // obscureText: true,
-                        decoration: InputDecoration(
-                          // hintText: 'Password',
-                          labelText: 'Username',
-                          fillColor: AllColors.textFieldColor,
-                          filled: true,
-                          border: const OutlineInputBorder(
-                            borderRadius: BorderRadius.all(
-                              Radius.circular(12),
-                            ),
-                          ),
-                          // labelStyle: TextField.materialMisspelledTextStyle,
-                        ),
-                        validator: (value) {
-                          if (value!.isEmpty) {
-                            return 'Please enter some text';
-                          }
-                          return null; // Return null if the input is valid
-                        },
+                      CustomTextField(
+                        hintText: 'Username',
+                        textController: usernameController,
+                        obscureText: false,
+                        // validator: (value) {
+                        //   if (value!.isEmpty) {
+                        //     return 'Please enter some text';
+                        //   }
+                        //   return null;
+                        // },
                       ),
                       const SizedBox(
                         height: 16,
                       ),
-                      TextFormField(
-                        // autofocus: true,
-                        // focusNode: FocusNode(
-                        //   canRequestFocus: true,
-                        // ),
-
-                        // autocorrect: false,
-                        controller: emailController,
-                        decoration: InputDecoration(
-                          // hintText: 'Username',
-                          labelText: 'Please Enter the Email',
-                          fillColor: AllColors.textFieldColor,
-                          filled: true,
-                          border: const OutlineInputBorder(
-                            borderRadius: BorderRadius.all(
-                              Radius.circular(12),
-                            ),
-                          ),
-                          // labelStyle: TextField.materialMisspelledTextStyle,
-                        ),
+                      CustomTextField(
+                        hintText: 'Please Enter the Email',
+                        textController: emailController,
+                        obscureText: false,
                         validator: (value) {
                           if (value!.isEmpty) {
                             return 'Please enter some text';
                           } else if (!value.contains('@')) {
                             return 'Invalid Email';
                           }
-                          return null; // Return null if the input is valid
+                          return null;
                         },
                       ),
                       const SizedBox(
                         height: 16,
                       ),
-                      TextFormField(
-                        controller: passwordController,
-                        autocorrect: false,
+                      CustomTextField(
+                        hintText: 'Please Enter the Password',
+                        textController: passwordController,
                         obscureText: true,
-                        decoration: InputDecoration(
-                          // hintText: 'Password',
-                          labelText: 'Please Enter the Password',
-                          fillColor: AllColors.textFieldColor,
-                          filled: true,
-                          border: const OutlineInputBorder(
-                            borderRadius: BorderRadius.all(
-                              Radius.circular(12),
-                            ),
-                          ),
-                          // labelStyle: TextField.materialMisspelledTextStyle,
-                        ),
-                        validator: (value) {
-                          if (value!.isEmpty) {
-                            return 'Please enter some text';
-                          }
-                          return null; // Return null if the input is valid
-                        },
+                        // validator: (value) {
+                        //   if (value!.isEmpty) {
+                        //     return 'Please enter some text';
+                        //   }
+                        //   return null;
+                        // },
                       ),
                       Align(
                         alignment: Alignment.centerRight,
@@ -169,7 +130,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                 email: emailController.text,
                                 context: context,
                               );
-                              
                             }
                           },
                           child: const CustomText(
@@ -179,6 +139,29 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           ),
                         ),
                       ),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      SizedBox(
+                        width: double.infinity,
+                        height: 45,
+                        child: ElevatedButton(
+                          style: ButtonStyle(
+                            backgroundColor: MaterialStateProperty.all(
+                              AllColors.bottonColor,
+                            ),
+                          ),
+                          onPressed: () {
+                            Navigator.of(context).pushNamed(Routes.login);
+                          },
+                          child: const CustomText(
+                            color: Colors.black,
+                            size: 12,
+                            text: 'Log In',
+                          ),
+                        ),
+                      ),
+
                       const Spacer(),
                     ],
                   ),
