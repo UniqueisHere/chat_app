@@ -1,0 +1,1 @@
+enum ProfileMenu { logout, editProfile }

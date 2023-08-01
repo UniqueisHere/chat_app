@@ -1,6 +1,13 @@
+import 'package:chat_app/core/constants/app_texts/app_texts.dart';
 import 'package:chat_app/core/constants/colors/colors.dart';
+import 'package:chat_app/core/constants/routes/routes.dart';
 import 'package:chat_app/core/widgets/custom_text.dart';
+import 'package:chat_app/core/widgets/profile_avatar.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+
+import '../../../layout/custom_appbar.dart';
+import '../widgets/profile_menu.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
@@ -9,12 +16,41 @@ class ProfileScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AllColors.scaffoldColor,
+      appBar: CustomAppBar(
+        title: AppTexts.fiveMinFlutter,
+        appBarActions: [
+          PopupMenuButton(
+            onSelected: (value) {
+              switch (value) {
+                case ProfileMenu.logout:
+                  FirebaseAuth.instance.signOut();
+                  Navigator.of(context).popAndPushNamed(Routes.login);
+                  break;
+                case ProfileMenu.editProfile:
+                  Navigator.of(context).pushNamed(Routes.editProfile);
+                  break;
+                default:
+              }
+            },
+            itemBuilder: (context) {
+              return [
+                const PopupMenuItem<ProfileMenu>(
+                  value: ProfileMenu.logout,
+                  child: Text(AppTexts.logout),
+                ),
+                const PopupMenuItem<ProfileMenu>(
+                  value: ProfileMenu.editProfile,
+                  child: Text(AppTexts.editProfile),
+                ),
+              ];
+            },
+          )
+        ],
+      ),
       body: Column(
         children: [
-          const Image(
-            image: AssetImage('assets/temp/temp_image_one.png'),
-            height: 80,
-            width: 80,
+          const ProfileAvatar(
+            size: 90,
           ),
           const SizedBox(
             height: 20,
@@ -22,7 +58,7 @@ class ProfileScreen extends StatelessWidget {
           CustomText(
             color: AllColors.textColor,
             size: 20,
-            text: 'Niraj Pandey',
+            text: AppTexts.nirajPandey,
             fontWeight: FontWeight.bold,
           ),
           const SizedBox(
@@ -31,7 +67,7 @@ class ProfileScreen extends StatelessWidget {
           CustomText(
             color: AllColors.textColor,
             size: 20,
-            text: 'Halgada, Nepal',
+            text: AppTexts.nirajPandeyLocation,
             // fontWeight: FontWeight.bold,
           ),
           const SizedBox(
@@ -45,13 +81,13 @@ class ProfileScreen extends StatelessWidget {
                   CustomText(
                     color: AllColors.textColor,
                     size: 14,
-                    text: '112',
+                    text: AppTexts.count,
                     fontWeight: FontWeight.bold,
                   ),
                   CustomText(
                     color: AllColors.textColor,
                     size: 14,
-                    text: 'Followers',
+                    text: AppTexts.followers,
                   ),
                 ],
               ),
@@ -60,13 +96,13 @@ class ProfileScreen extends StatelessWidget {
                   CustomText(
                     color: AllColors.textColor,
                     size: 14,
-                    text: '112',
+                    text: AppTexts.count,
                     fontWeight: FontWeight.bold,
                   ),
                   CustomText(
                     color: AllColors.textColor,
                     size: 14,
-                    text: 'Posts',
+                    text: AppTexts.posts,
                   ),
                 ],
               ),
@@ -75,13 +111,13 @@ class ProfileScreen extends StatelessWidget {
                   CustomText(
                     color: AllColors.textColor,
                     size: 14,
-                    text: '112',
+                    text: AppTexts.count,
                     fontWeight: FontWeight.bold,
                   ),
                   CustomText(
                     color: AllColors.textColor,
                     size: 14,
-                    text: 'Following',
+                    text: AppTexts.following,
                   ),
                 ],
               ),

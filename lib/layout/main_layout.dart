@@ -1,3 +1,4 @@
+import 'package:chat_app/core/constants/app_texts/app_texts.dart';
 import 'package:chat_app/core/constants/responsive/responsive_layout.dart';
 import 'package:chat_app/features/home/views/home_screen.dart';
 import 'package:chat_app/features/profile/views/profile_screen.dart';
@@ -5,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../core/constants/colors/colors.dart';
+import '../features/map/views/map_screen.dart';
 
 class Layout extends StatefulWidget {
   const Layout({super.key});
@@ -17,13 +19,7 @@ class _LayoutState extends State<Layout> {
   int currentIndex = 0;
   List<Widget> screens = [
     HomeScreen(),
-    Scaffold(
-      body: Container(
-        child: const Center(
-          child: Text('Profile Screen'),
-        ),
-      ),
-    ),
+    MapScreen(),
     const Scaffold(
       body: Center(
         child: Text('Favorite Screen'),
@@ -49,27 +45,27 @@ class _LayoutState extends State<Layout> {
                 icon: FaIcon(
                   FontAwesomeIcons.house,
                 ),
-                label: 'Home'),
+                label: AppTexts.home),
             BottomNavigationBarItem(
                 icon: FaIcon(
                   FontAwesomeIcons.heart,
                 ),
-                label: 'Favorite'),
+                label: AppTexts.favorite),
             BottomNavigationBarItem(
                 icon: FaIcon(
                   FontAwesomeIcons.plus,
                 ),
-                label: 'Add'),
+                label: AppTexts.add),
             BottomNavigationBarItem(
                 icon: FaIcon(
                   FontAwesomeIcons.comment,
                 ),
-                label: 'Favorite'),
+                label: AppTexts.favorite),
             BottomNavigationBarItem(
                 icon: FaIcon(
                   Icons.person,
                 ),
-                label: 'Profile'),
+                label: AppTexts.profile),
           ],
           currentIndex: currentIndex,
           onTap: (value) {
